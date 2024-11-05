@@ -1,5 +1,6 @@
 "use client";
 
+import { PaymentModal } from "@/components/payment-modal";
 import PreviewModal from "@/components/preview-modal";
 import { useEffect, useState } from "react";
 
@@ -15,7 +16,10 @@ const ModalProvider = () => {
     }
 
     return (
-        <PreviewModal />
+        <>
+            <PreviewModal />
+            <PaymentModal />
+        </>
     );
 }
  

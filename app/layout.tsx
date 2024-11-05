@@ -7,12 +7,13 @@ import ModalProvider from '@/providers/modal-provider'
 import { ToasterProvider } from '@/providers/toast-provider'
 
 import './globals.css'
+import { ClerkProvider } from '@clerk/nextjs'
 
 const font = Urbanist({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Store',
-  description: 'Store',
+  title: 'Streetheus | Store',
+  description: 'Streetheus admin dashboard for market use.',
 }
 
 export default function RootLayout({
@@ -21,14 +22,16 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={font.className}>
-        <ModalProvider />
-        <ToasterProvider />
-        <Navbar />
-        {children}
-        <Footer />
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={font.className}>
+          <ModalProvider />
+          <ToasterProvider />
+          <Navbar />
+          {children}
+          <Footer />
+        </body>
+      </html>
+    </ClerkProvider>
   )
 }

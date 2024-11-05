@@ -8,17 +8,21 @@ export const revalidate = 0;
 
 const HomePage = async () => {
     const products = await getProducts({ isFeatured: true });
-    const billboard = await getBillboard("73937b1c-db4a-4b8f-937f-9626219a13e7");
+    const billboard = await getBillboard("217d35b8-e6e5-4235-83c5-e4995a6ec369");
 
     return (
-        <Container>
-            <div className="space-y-10 pb-10">
-                <Billboard data={billboard} />
-                <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8">
-                    <ProductList title="Featured Products" items={products} />
+        <div className="dark:bg-black bg-white  dark:bg-grid-white/[0.2] bg-grid-rose-400/75 relative">
+            <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+            
+            <Container>
+                <div className="space-y-10 pb-10">
+                    <Billboard data={billboard} />
+                    <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8">
+                        <ProductList title="Featured Products" items={products} />
+                    </div>
                 </div>
-            </div>
-        </Container>
+            </Container>
+        </div>
     );
 }
  

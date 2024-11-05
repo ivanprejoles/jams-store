@@ -2,7 +2,7 @@
 
 import { Product } from "@/types";
 import Currency from "@/components/ui/currency";
-import Button from "@/components/ui/button";
+import {Button} from "@/components/ui/button";
 import { ShoppingCart } from "lucide-react";
 import useCart from "@/hooks/use-cart";
 
@@ -41,10 +41,12 @@ const Info: React.FC<InfoProps> = ({
                 </div>
             </div>
             <div className="mt-10 flex items-center gap-x-3">
-                <Button onClick={onAddToCart} className="flex items-center gap-x-2">
-                    Add to Cart
-                    <ShoppingCart />
-                </Button>
+                <button onClick={onAddToCart} className="p-[3px] relative flex items-center gap-x-2">
+                    <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg" />
+                    <div className="px-8 py-2  bg-black rounded-[6px]  relative group transition duration-200 text-white hover:bg-transparent">
+                        Add to Cart
+                    </div>
+                </button>
             </div>
         </div>
     );
