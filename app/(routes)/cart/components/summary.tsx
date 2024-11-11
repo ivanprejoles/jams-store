@@ -29,10 +29,9 @@ const Summary = () => {
   const items = useCart((state) => state.items);
   const removeAll = useCart((state) => state.removeAll);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [isCopyOpen, setIsCopyOpen] = useState(false);
   const [data, setData] = useState<exportedData|undefined>()
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const { isSignedIn, isLoaded , user} = useUser();
   const router = useRouter()
   
@@ -80,8 +79,8 @@ const Summary = () => {
     contactNumber: string;
 }) => {
     try {
-      if (loading) return
-      setLoading(true)
+      if (isLoading) return
+      setIsLoading(true)
 
       if (isLoaded) {
         setIsLoading(false);
@@ -107,7 +106,7 @@ const Summary = () => {
       toast.error('Something went wrong.');
       console.error(error)
     } finally {
-      setLoading(false)
+      setIsLoading(false)
       setIsModalOpen(false)
     }
   }
@@ -141,7 +140,7 @@ const Summary = () => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onConfirm={onCheckout}
-        loading={loading}
+        loading={isLoading}
       />
       <CopyModal
         isOpen={isCopyOpen}
