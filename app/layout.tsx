@@ -15,6 +15,10 @@ const font = Urbanist({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Streetheus | Store',
   description: 'Streetheus admin dashboard for market use.',
+  openGraph: { images: ["/streetheus-logo.png"] },
+  icons: {
+    icon: "/app/favicon.ico",
+  },
 }
 
 export default function RootLayout({
