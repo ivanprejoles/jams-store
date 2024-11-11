@@ -21,7 +21,7 @@ const Navbar = async () => {
                             width={100}
                             height={30}
                         />
-                        <p className="font-bold text-xl relative bg-clip-text text-transparent bg-no-repeat bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500">STORE</p>
+                        <p className="font-bold hidden md:block text-xl relative bg-clip-text text-transparent bg-no-repeat bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500">STORE</p>
                     </Link>
                     <MainNav data={categories} />
                     <NavbarActions />
