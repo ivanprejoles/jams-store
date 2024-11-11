@@ -13,6 +13,7 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { ModeToggle } from "./dark-mode";
 
 const NavbarActions = () => {
     const [isMounted, setIsMounted] = useState(false);
@@ -21,7 +22,6 @@ const NavbarActions = () => {
     useEffect(() => {
         setIsMounted(true);
     }, []);
-    const toggleDropdown = () => setIsOpen(!isOpen)
     const router = useRouter();
     const cart = useCart();
 
@@ -30,9 +30,10 @@ const NavbarActions = () => {
     }
 
     return (
-        <div    className="md:ml-auto flex items-center gap-x-4 md:pr-2">
+        <div className="ml-0 md:ml-auto flex items-center gap-x-1 md:gap-x-4 md:pr-2">
+            <div className="lg:hidden flex items-center gap-x-1">
+            <ModeToggle />
             {/* Mobile Menu */}
-            <div className="lg:hidden">
                 <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
                 <DropdownMenuTrigger asChild>
                     <Button variant="outline" size="icon">
@@ -63,14 +64,15 @@ const NavbarActions = () => {
 
       {/* Desktop Menu */}
             <div className="hidden lg:flex items-center gap-x-4">
+                <ModeToggle />
                 <button onClick={() => router.push("/cart")} className="p-[3px] relative flex items-center gap-x-2">
                     <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full" />
-                    <div className="px-8 py-2  bg-black flex items-center  rounded-full  relative group transition duration-200 text-white hover:bg-transparent group">
+                    <div className="px-8 py-2 bg-white dark:bg-[#020817] flex items-center  rounded-full  relative group transition duration-200 text-white hover:bg-transparent dark:hover:bg-transparent group">
                         <ShoppingBag
                             size={20}
-                            color="white"
+                            className="text-[#020817] group-hover:text-white dark:text-white"
                         />
-                        <span className="ml-2 text-sm font-medium text-white">
+                        <span className="ml-2 text-sm font-medium text-[#020817] group-hover:text-white dark:text-white">
                             {cart.items.length}
                         </span>
                     </div>
@@ -78,10 +80,10 @@ const NavbarActions = () => {
                 <SignedIn>
                     <button onClick={() => router.push("/order")} className="p-[3px] relative flex items-center gap-x-2">
                         <div className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full" />
-                        <div className="px-8 py-2  bg-black flex items-center  rounded-full  relative group transition duration-200 text-white hover:bg-transparent group">
+                        <div className="px-8 py-2 bg-white dark:bg-[#020817] flex items-center  rounded-full  relative group transition duration-200 text-white hover:bg-transparent dark:hover:bg-transparent group">
                             <TableProperties
                                 size={20}
-                                color="white"
+                                className="text-[#020817] group-hover:text-white dark:text-white"
                             />
                         </div>
                     </button>

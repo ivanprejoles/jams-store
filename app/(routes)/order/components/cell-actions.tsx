@@ -18,25 +18,7 @@ interface CellActionProps {
 export const CellAction: React.FC<CellActionProps> = ({
     data
 }) => {
-    const params = useParams();
-    const router = useRouter();
     const {onOpen} = usePaymentModal()
-    // const [open, setOpen] = useState(false);
-    const [loading, setLoading] = useState(false);
-
-    const onPaid = async () => {
-        try {
-            setLoading(true);
-            await axios.patch(`/api/${params.storeId}/orders/${data.id}`)
-            router.refresh();
-            toast.success("Billboard deleted.")
-        } catch (error) {
-            toast.error("Make sure you removed all categories using this billboard first.");
-        } finally {
-            setLoading(false);
-            // setOpen(false);
-        }
-    }
 
     return (
         <>
@@ -55,14 +37,9 @@ export const CellAction: React.FC<CellActionProps> = ({
                         Actions
                     </DropdownMenuLabel>
                     <DropdownMenuItem 
-                        onClick={() => onOpen({email: data.email, name: data.name, orderId: data.id})}>
+                        onClick={() => onOpen({email: data.email, name: data.name, orderId: data.id, address: data.address, phone: data.phone})}>
                         <Coins className="mr-2 h-4 w-4" />
                         Payment
-                    </DropdownMenuItem>
-                    <DropdownMenuItem 
-                        onClick={() => onPaid()}>
-                        <ReceiptText className="mr-2 h-4 w-4" />
-                        Receipt
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>

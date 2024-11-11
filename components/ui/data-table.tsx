@@ -23,6 +23,7 @@ import {
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import Image from "next/image"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -52,7 +53,7 @@ export function DataTable<TData, TValue>({
   })
 
   return (
-    <div>
+    <div className="p-4 sm:p-6 lg:p-8 rounded-xl relative backdrop-blur-sm bg-slate-100/5 dark:bg-white/5 border-slate-600/30 dark:border-white/40 border">
       <div className="flex items-center py-4">
         <Input
           placeholder="Search"
@@ -92,7 +93,18 @@ export function DataTable<TData, TValue>({
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      {cell.column.id === "imageSrc" ? (
+                        <div className="w-full h-full aspect-square relative rounded-md overflow-hidden">
+                            <Image
+                              src={cell.getValue() as string}
+                              alt="Product"
+                              layout="fill"
+                              className="object-cover"
+                            />
+                        </div>
+                      ) : (
+                        flexRender(cell.column.columnDef.cell, cell.getContext())
+                      )}
                     </TableCell>
                   ))}
                 </TableRow>

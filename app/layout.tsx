@@ -8,6 +8,7 @@ import { ToasterProvider } from '@/providers/toast-provider'
 
 import './globals.css'
 import { ClerkProvider } from '@clerk/nextjs'
+import { ThemeProvider } from '@/components/theme-provider'
 
 const font = Urbanist({ subsets: ['latin'] })
 
@@ -25,11 +26,18 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={font.className}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
           <ModalProvider />
           <ToasterProvider />
           <Navbar />
           {children}
           <Footer />
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>

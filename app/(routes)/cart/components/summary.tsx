@@ -114,26 +114,26 @@ const Summary = () => {
 
   return ( 
     <div
-      className="mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8"
+      className="mt-16 rounded-lg backdrop-blur-sm bg-slate-100/5 dark:bg-white/5 border-slate-600/40 dark:border-white/40 border px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8"
     >
-      <h2 className="text-lg font-medium text-gray-900">
+      <h2 className="text-lg font-medium text-gray-900 dark:text-gray-200">
         Order summary
       </h2>
       <div className="mt-6 space-y-4">
         <div className="flex items-center justify-between border-t border-gray-200 pt-4">
-          <div className="text-base font-medium text-gray-900">Order total</div>
+          <div className="text-base font-medium text-gray-900 dark:text-gray-200">Order total</div>
          <Currency value={totalPrice} />
         </div>
       </div>
       <SignedIn>
-        <Button onClick={() => setIsModalOpen(true)} disabled={items.length === 0} className="w-full mt-6">
-          Checkout
+        <Button onClick={() => setIsModalOpen(true)} disabled={items.length === 0 || isLoading} className="w-full mt-6 bg-gradient-to-r from-indigo-500 to-purple-500 text-white">
+          Order
         </Button>
       </SignedIn>
       <SignedOut>
           <SignInButton mode="modal">
-            <Button disabled={items.length === 0} className="w-full mt-6">
-              Checkout
+            <Button disabled={items.length === 0 || isLoading} className="w-full mt-6 text-white bg-gradient-to-r from-indigo-500 to-purple-500">
+              Order
             </Button>
           </SignInButton>
       </SignedOut>
