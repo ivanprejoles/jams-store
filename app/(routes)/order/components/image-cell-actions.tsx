@@ -23,8 +23,6 @@ export const ImageCellAction: React.FC<CellActionProps> = ({
     const [loading, setLoading] = useState(false);
     const [isImageOpen, setIsImageOpen] = useState(false);
 
-    console.log(data.id)
-
     const onDelete = async () => {
         if (loading) return
         try {

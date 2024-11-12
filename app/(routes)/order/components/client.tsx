@@ -15,7 +15,6 @@ export const OrderClient: React.FC<OrderClientProps> = ({
     data,
     payment
 }) => {
-    console.log(payment)
     return (    
         <>
             <Heading
