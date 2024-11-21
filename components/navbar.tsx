@@ -17,8 +17,8 @@ const Navbar = async () => {
                     <Link href="/" className="ml-4 flex lg:ml-0 gap-x-2">
                         <Image
                             alt="logo"
-                            src='/streetheus-logo.png'
-                            width={100}
+                            src='/logo.png'
+                            width={30}
                             height={30}
                         />
                         <p className="font-bold hidden md:block text-xl relative bg-clip-text text-transparent bg-no-repeat bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500">STORE</p>

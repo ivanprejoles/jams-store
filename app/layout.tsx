@@ -13,9 +13,9 @@ import { ThemeProvider } from '@/components/theme-provider'
 const font = Urbanist({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Streetheus | Store',
-  description: 'Streetheus admin dashboard for market use.',
-  openGraph: { images: ["/streetheus-logo.png"] },
+  title: 'Jams Footwear | Store',
+  description: 'Jams Footwear admin dashboard for market use.',
+  openGraph: { images: ["/logo.png"] },
   icons: {
     icon: "/app/favicon.ico",
   },
