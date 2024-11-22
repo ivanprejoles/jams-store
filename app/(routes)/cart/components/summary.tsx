@@ -125,13 +125,13 @@ const Summary = () => {
         </div>
       </div>
       <SignedIn>
-        <Button onClick={() => setIsModalOpen(true)} disabled={items.length === 0 || isLoading} className="w-full mt-6 bg-gradient-to-r from-indigo-500 to-purple-500 text-white">
+        <Button onClick={() => setIsModalOpen(true)} disabled={items.length === 0 || isLoading} className="w-full mt-6 bg-gradient-to-r from-red-500 to-orange-500 text-white">
           Order
         </Button>
       </SignedIn>
       <SignedOut>
           <SignInButton mode="modal">
-            <Button disabled={items.length === 0 || isLoading} className="w-full mt-6 text-white bg-gradient-to-r from-indigo-500 to-purple-500">
+            <Button disabled={items.length === 0 || isLoading} className="w-full mt-6 text-white bg-gradient-to-r from-red-500 to-orange-500">
               Order
             </Button>
           </SignInButton>

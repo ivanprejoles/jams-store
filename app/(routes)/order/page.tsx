@@ -48,6 +48,7 @@ const OrderPage = async () => {
     
   return (
     <div className="flex-col bg-white dark:bg-[#020817] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] min-h-screen">
+        <div className="absolute top-0 pointer-events-none inset-0 w-full h-full flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
         <div className="flex-1 space-y-4 p-8 pt-6">
             <OrderClient data={formattedOrders} payment={allPaymentDetails} />
         </div>

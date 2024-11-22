@@ -110,8 +110,8 @@ const MainNav: React.FC<MainNavProps> = ({
               key={route.href}
               href={route.href}
               className={cn(
-                "text-sm font-medium transition-colors bg-clip-text hover:text-transparent hover:bg-no-repeat hover:bg-gradient-to-r hover:from-purple-500 hover:via-violet-500 hover:to-pink-500",
-                route.active ? "relative bg-clip-text text-transparent bg-no-repeat bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500" : "text-muted-foreground"
+                "text-sm font-medium transition-colors bg-clip-text hover:text-transparent hover:bg-no-repeat hover:bg-gradient-to-r hover:from-red-500 hover:via-orange-500 hover:to-yellow-500",
+                route.active ? "relative bg-clip-text text-transparent bg-no-repeat bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500" : "text-muted-foreground"
               )}
             >
               {route.label}

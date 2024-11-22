@@ -35,7 +35,8 @@ const CategoryPage: React.FC<CategoryPageProps> = async ({
     const category = await getCategory(params.categoryId);
 
     return (
-        <div className="bg-white dark:bg-[#020817] dark:bg-dot-white/[0.5] bg-dot-purple-400">
+        <div className="bg-white dark:bg-[#020817] dark:bg-dot-white/[0.5] bg-dot-red-400 relative">
+            <div className="absolute top-0 w-full h-full pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
             <Container>
                 <Billboard data={category.billboard} />
                 <div className="px-4 sm:px-6 lg:px-8 pb-24">
