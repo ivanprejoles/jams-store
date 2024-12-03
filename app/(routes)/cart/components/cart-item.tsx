@@ -76,13 +76,13 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
                 icon={<X size={15} className="dark:text-white" />}
               />
             </div>
-            <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
+            <div className="relative pr-9 gap-4 sm:grid grid-cols-1 sm:gap-x-6 sm:pr-0">
               <div className="flex justify-between">
                 <p className="text-lg font-semibold text-black dark:text-white">
                   {data.name}
                 </p>
               </div>
-              <div className="mt-1 flex text-sm">
+              <div className="mt-1 flex text-sm gap-4">
                 <Select
                   value={cart.items.find((item) => item.id === data.id)?.colors[0].name}
                   onValueChange={(color) =>
