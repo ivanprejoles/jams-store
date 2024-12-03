@@ -30,7 +30,9 @@ const useCart = create(
           return toast("Item already in cart.");
         }
 
-        set({ items: [...get().items, { ...data, quantity: 1, selectedColors: {} }] });
+        set({
+          items: [...get().items, { ...data, quantity: 1, selectedColors: {} }],
+        });
         toast.success("Item added to cart.");
       },
       increaseQuantity: (id: string) => {
@@ -82,7 +84,10 @@ const useCart = create(
         }
 
         // Update the selectedColors for the item
-        currentItems[itemIndex].selectedColors = { ...currentItems[itemIndex].selectedColors, ...updatedColors };
+        currentItems[itemIndex].selectedColors = {
+          ...currentItems[itemIndex].selectedColors,
+          ...updatedColors,
+        };
 
         set({ items: [...currentItems] });
         toast.success("Item colors updated.");
