@@ -10,14 +10,21 @@ export interface Category {
     billboard: Billboard;
 };
 
+export enum SalesStatus {
+    SLOW,
+    FAST
+};
+
 export interface Product {
     id: string;
     category: Category;
     name: string;
-    price: string;
+    price: number;
+    stock: number;
+    salesStatus: SalesStatus
     isFeatured: boolean;
-    size: Size;
-    color: Color;
+    sizes: Size[];
+    colors: Color[];
     images: Image[];
 };
 

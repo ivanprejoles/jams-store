@@ -47,7 +47,7 @@ const NavbarActions = () => {
           <DropdownMenuContent align="end">
             <DropdownMenuItem onClick={() => router.push("/cart")}>
               <ShoppingBag className="mr-2 h-4 w-4" />
-              Cart ({cart.items.length})
+              Cart ({cart.items.reduce((sum, item) => sum + item.quantity, 0)})
             </DropdownMenuItem>
             <SignedIn>
               <DropdownMenuItem onClick={() => router.push("/order")}>
@@ -82,7 +82,7 @@ const NavbarActions = () => {
               className="text-[#020817] group-hover:text-white dark:text-white"
             />
             <span className="ml-2 text-sm font-medium text-[#020817] group-hover:text-white dark:text-white">
-              {cart.items.length}
+              {cart.items.reduce((sum, item) => sum + item.quantity, 0)}
             </span>
           </div>
         </button>
