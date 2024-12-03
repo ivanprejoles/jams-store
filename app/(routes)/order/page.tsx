@@ -31,7 +31,7 @@ const OrderPage = async () => {
     }))
     
     const allPaymentDetails: PaymentColumn[] = orders.flatMap((order: any) =>
-        order.Payment.map((payment: any) => ({
+        order.payments.map((payment: any) => ({
             id: payment.id,
             orderId: payment.orderId,
             phone: payment.phone,
