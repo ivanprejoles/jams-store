@@ -84,7 +84,6 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
               </div>
               <div className="mt-1 flex text-sm gap-4">
                 <Select
-                  value={cart.items.find((item) => item.id === data.id)?.colors[0].name}
                   onValueChange={(color) =>
                     handleColorChange(`color${index + 1}`, color)
                   }
@@ -101,7 +100,6 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
                   </SelectContent>
                 </Select>
                 <Select
-                  value={cart.items.find((item) => item.id === data.id)?.sizes[0].name}
                   onValueChange={(size) =>
                     handleSizeChange(`size${index + 1}`, size)
                   }
