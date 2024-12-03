@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 export type ProductWithQuantity = Product & {
   quantity: number;
   selectedColors: Record<string, string>; // Key-value pair for colors
+  selectedSizes: Record<string, string>; // Key-value pair for colors
 };
 
 interface CartStore {
@@ -16,6 +17,7 @@ interface CartStore {
   removeItem: (id: string) => void;
   removeAll: () => void;
   updateItemColors: (id: string, updatedColors: Record<string, string>) => void; // New method
+  updateItemSizes: (id: string, updatedSizes: Record<string, string>) => void; // New method
 }
 
 const useCart = create(
@@ -31,7 +33,7 @@ const useCart = create(
         }
 
         set({
-          items: [...get().items, { ...data, quantity: 1, selectedColors: {} }],
+          items: [...get().items, { ...data, quantity: 1, selectedColors: {}, selectedSizes: {} }],
         });
         toast.success("Item added to cart.");
       },
@@ -87,6 +89,23 @@ const useCart = create(
         currentItems[itemIndex].selectedColors = {
           ...currentItems[itemIndex].selectedColors,
           ...updatedColors,
+        };
+
+        set({ items: [...currentItems] });
+        toast.success("Item colors updated.");
+      },
+      updateItemSizes: (id: string, updatedSizes: Record<string, string>) => {
+        const currentItems = get().items;
+        const itemIndex = currentItems.findIndex((item) => item.id === id);
+
+        if (itemIndex === -1) {
+          return toast.error("Item not found in cart.");
+        }
+
+        // Update the selectedColors for the item
+        currentItems[itemIndex].selectedSizes = {
+          ...currentItems[itemIndex].selectedSizes,
+          ...updatedSizes
         };
 
         set({ items: [...currentItems] });

@@ -43,6 +43,16 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
       cart.updateItemColors(foundItem.id, updatedColors);
     }
   };
+  // Handle color change and update the color in the selectedColors object
+  const handleSizeChange = (sizeKey: string, size: string) => {
+    const foundItem = cart.items.find((item) => item.id === data.id);
+    if (foundItem) {
+      const updatedSizes = { ...foundItem.selectedSizes, [sizeKey]: size };
+
+      // Update the cart with the new selectedColors
+      cart.updateItemSizes(foundItem.id, updatedSizes);
+    }
+  };
 
   return (
     <>
@@ -90,9 +100,23 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
                     ))}
                   </SelectContent>
                 </Select>
-                <p className="text-gray-500 dark:text-gray-200 ml-4 border-l border-gray-200 pl-4">
-                  {/* {data.size.name} */}
-                </p>
+                <Select
+                  value={cart.items.find((item) => item.id === data.id)?.sizes[0].name}
+                  onValueChange={(size) =>
+                    handleSizeChange(`size${index + 1}`, size)
+                  }
+                >
+                  <SelectTrigger className="w-[100px]">
+                    <SelectValue placeholder="SIze" />
+                  </SelectTrigger>
+                  <SelectContent>
+                  {cart.items.find((item) => item.id === data.id)?.sizes?.map((size, key) => (
+                      <SelectItem key={key} value={size.name}>
+                        {size.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
               <Currency value={data.price} />
             </div>

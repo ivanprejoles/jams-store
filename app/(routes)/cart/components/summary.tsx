@@ -89,7 +89,7 @@ const Summary = () => {
         }
       }
       const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/checkout`, {
-        productIds: items.map((item) => ({id:item.id, quantity: item.quantity, colors: item.selectedColors})),
+        productIds: items.map((item) => ({id:item.id, quantity: item.quantity, colors: item.selectedColors, sizes: item.selectedSizes})),
         address,
         contactNumber,
         userId: user?.id,
