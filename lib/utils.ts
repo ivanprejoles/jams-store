@@ -29,3 +29,8 @@ export const formatDateStamp = (isoString: Date) => {
     year: "numeric"
   }).format(date);
 }
+
+export function truncateText(text: unknown, maxLength: number = 30): string {
+  const stringText = typeof text === 'string' ? text : String(text || '');
+  return stringText.length > maxLength ? stringText.slice(0, maxLength) + '' : stringText;
+}

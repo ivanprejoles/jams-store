@@ -46,9 +46,8 @@ export const InfosModal: React.FC<AlertModalProps> = ({
     },
   })
 
-  const isLoading = form.formState.isSubmitting;
-
   function onSubmit(values: z.infer<typeof formSchema>) {
+    if (loading) return;
     onConfirm(values)
   }
 
@@ -92,10 +91,10 @@ export const InfosModal: React.FC<AlertModalProps> = ({
             )}
           />
           <div className="pt-6 space-x-2 flex items-center justify-end w-full">
-            <Button type="button" disabled={isLoading} onClick={onClose} className="bg-white text-black">
+            <Button type="button" disabled={loading} onClick={onClose} className="bg-white text-black">
               Cancel
             </Button>
-            <Button type="submit" disabled={isLoading} className="text-red-500 bg-white">
+            <Button type="submit" disabled={loading} className="text-red-500 bg-white">
               {loading ? "Processing..." : "Continue"}
             </Button>
           </div>
