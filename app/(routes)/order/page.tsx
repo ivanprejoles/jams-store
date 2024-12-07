@@ -6,6 +6,7 @@ import React from "react";
 import { OrderClient } from "./components/client";
 import { OrderColumn, PaymentColumn } from "./components/columns";
 import { formatter } from "@/lib/utils";
+import Container from "@/components/ui/container";
 
 const OrderPage = async () => {
   const { userId } = auth();
@@ -22,13 +23,12 @@ const OrderPage = async () => {
     name: item.name,
     phone: item.phone,
     address: item.address,
-    products: item.orderItems
-      .map((orderItem: any) => {
-        const sizes = orderItem.sizes.join(", ");
-        const colors = orderItem.colors.join(", ");
-        return `${orderItem.product.name} (${orderItem.quantity}) [${sizes} | ${colors}]`;
-      })
-      .join(", "),
+    products: item.orderItems.map((orderItem: any) => ({
+      name: orderItem.product.name,
+      quantity: orderItem.quantity,
+      sizes: orderItem.sizes,
+      colors: orderItem.colors,
+    })),
     totalPrice: formatter.format(
       item.orderItems.reduce((total: any, item: any) => {
         return total + Number(item.product.price);
@@ -44,13 +44,12 @@ const OrderPage = async () => {
       orderId: payment.orderId,
       phone: payment.phone,
       address: payment.address,
-      products: order.orderItems
-        .map((orderItem: any) => {
-          const sizes = orderItem.sizes.join(", ");
-          const colors = orderItem.colors.join(", ");
-          return `${orderItem.product.name} (${orderItem.quantity}) [${sizes} | ${colors}]`;
-        })
-        .join(", "),
+      products: order.orderItems.map((orderItem: any) => ({
+        name: orderItem.product.name,
+        quantity: orderItem.quantity,
+        sizes: orderItem.sizes,
+        colors: orderItem.colors,
+      })),
       email: payment.email,
       name: payment.name,
       date: format(payment.date, "MMM do, yyyy"),
@@ -61,11 +60,12 @@ const OrderPage = async () => {
   );
 
   return (
-    <div className="dark:bg-black bg-white dark:bg-grid-small-orange/[0.2] bg-grid-small-rose-400/95 relative">
-      <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
-      <div className="flex-1 space-y-4 p-8 pt-6">
-        <OrderClient data={formattedOrders} payment={allPaymentDetails} />
-      </div>
+    <div className="bg-white dark:bg-[#020817] dark:bg-dot-white/[0.2] bg-dot-black/[0.2] min-h-screen">
+      <Container>
+        <div className="flex-1 space-y-4 p-8 pt-6">
+          <OrderClient data={formattedOrders} payment={allPaymentDetails} />
+        </div>
+      </Container>
     </div>
   );
 };

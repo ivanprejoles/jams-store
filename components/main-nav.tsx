@@ -72,7 +72,7 @@ const MainNav: React.FC<MainNavProps> = ({
               {(id && data)
                 ? data.find((route) => route.id === id)?.name || 'Select page...'
                 : "Select page..."}
-              <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50 text-red-600 font-bold" />
+              <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50 font-bold" />
             </Button>
           </PopoverTrigger>
           <PopoverContent className="w-[200px] p-0">
@@ -87,7 +87,7 @@ const MainNav: React.FC<MainNavProps> = ({
                     >
                         <Link
                             href={route.href}
-                            className="flex text-red-600"
+                            className="flex"
                         >
                             <Check  
                             className={cn(

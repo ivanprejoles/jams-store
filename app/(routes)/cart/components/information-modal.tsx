@@ -94,7 +94,7 @@ export const InfosModal: React.FC<AlertModalProps> = ({
             <Button type="button" disabled={loading} onClick={onClose} className="bg-white text-black">
               Cancel
             </Button>
-            <Button type="submit" disabled={loading} className="text-red-500 bg-white">
+            <Button type="submit" disabled={loading} className="text-white bg-gradient-to-r from-teal-500 via-cyan-500 to-blue-500 bg-white">
               {loading ? "Processing..." : "Continue"}
             </Button>
           </div>

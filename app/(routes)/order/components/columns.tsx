@@ -3,6 +3,15 @@
 import { ColumnDef } from "@tanstack/react-table"
 import { CellAction } from "./cell-actions"
 import { ImageCellAction } from "./image-cell-actions"
+import OrderTooltipWrapper from "@/components/ui/product-tooltip-wrapper";
+import { formatProducts } from "@/lib/utils";
+
+export type OrderProduct = {
+  name: string;
+  quantity: number;
+  sizes: string[];
+  colors: string[];
+};
 
 export type OrderColumn = {
   id: string
@@ -13,14 +22,14 @@ export type OrderColumn = {
   userId:string
   isPaid: boolean
   totalPrice: string
-  products: string
+  products: OrderProduct[]
   createdAt: string
 }
 export type PaymentColumn = {
   id: string
   orderId: string
   phone: string
-  products: string
+  products: OrderProduct[]
   address: string
   email: string
   name: string
@@ -34,6 +43,18 @@ export const columns: ColumnDef<OrderColumn>[] = [
   {
     accessorKey: "products",
     header: "Products",
+    cell: ({ row }) => {
+      const { formattedWithBr, formattedWithoutBr } = formatProducts(
+        row.original.products
+      );
+      return (
+        <OrderTooltipWrapper
+          maxLength={10}
+          value={formattedWithoutBr}
+          text={formattedWithBr}
+        />
+      );
+    },
   },
   {
     accessorKey: "email",
@@ -73,6 +94,18 @@ export const paymentColumns: ColumnDef<PaymentColumn>[] = [
   {
     accessorKey: "products",
     header: "Products",
+    cell: ({ row }) => {
+      const { formattedWithBr, formattedWithoutBr } = formatProducts(
+        row.original.products
+      );
+      return (
+        <OrderTooltipWrapper
+          maxLength={10}
+          value={formattedWithoutBr}
+          text={formattedWithBr}
+        />
+      );
+    },
   },
   {
     accessorKey: "email",

@@ -55,7 +55,7 @@ const Info: React.FC<InfoProps> = ({ data }) => {
             {data?.sizes?.map((size, index) => (
               <div
                 key={index}
-                className="flex items-center gap-x-2 px-2 py-1 border border-orange-600 rounded-md"
+                className="flex items-center gap-x-2 px-2 py-1 border border-orange-500 rounded-md"
               >
                 <span className="text-sm font-medium">{size.name}</span>
                 <span className="text-sm ">({size.value})</span>
@@ -70,7 +70,7 @@ const Info: React.FC<InfoProps> = ({ data }) => {
             {data?.colors?.map((color, index) => (
               <div key={index} className="flex items-center gap-x-2">
                 <div
-                  className="h-6 w-6 rounded-full border border-orange-600"
+                  className="h-6 w-6 rounded-full border border-orange-500"
                   style={{ backgroundColor: color.value }}
                 />
                 <span className="text-sm font-medium text-black dark:text-white">
